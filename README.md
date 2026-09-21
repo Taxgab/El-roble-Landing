@@ -15,4 +15,4 @@ Abrí `index.html` en un navegador. No requiere instalación ni proceso de compi
 
 ## Antes de publicar
 
-Reemplazá el número de ejemplo `5490000000000` en `index.html` por el WhatsApp comercial real, con código de país y sin `+`, espacios ni guiones.
+Reemplazá el número de ejemplo `5491131370003` en `index.html` por el WhatsApp comercial real, con código de país y sin `+`, espacios ni guiones.
