@@ -12,7 +12,7 @@ There is no dev server, bundler, or npm script. Open `index.html` directly in a 
 - `styles.css` — all styles, authored as a **single minified line** (~17.5 KB).
 - `script.js` — classic (non-module) script loaded at the end of `<body>`. Only mobile menu (Escape/click-outside dismissal, scroll lock), scroll-reveal (feature-checked IntersectionObserver with synchronous fallback), stat counters, and footer year.
 - `assets/` — live files only. `.webp` sources + `.jpg` `<picture>` fallbacks for every photo, `og-cover.jpg` (1200x630 OG/Twitter image), `logo-mark.png`/`.webp` (wordmark), `logo-icon.png` (icon source), `favicon-32.png` + `apple-touch-icon.png`. All original big PNGs, unreferenced jpg/png art, and `assets/source/` were deleted.
-- `robots.txt` + `sitemap.xml` — root-level, single page, domain `https://el-roble-landing.vercel.app`.
+- `robots.txt` + `sitemap.xml` — root-level, single page, domain `https://elroble.ar`.
 - `vercel.json` — sets `Cache-Control: public,max-age=31536000,immutable` for `/assets/(.*)`; HTML caching is untouched (Vercel default).
 
 ## Gotchas
