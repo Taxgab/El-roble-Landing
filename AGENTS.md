@@ -11,7 +11,7 @@ There is no dev server, bundler, or npm script. Open `index.html` directly in a 
 - `index.html` — the entire page, one `<section>` per block. Copy is Spanish (`lang="es"`).
 - `styles.css` — all styles, authored as a **single minified line** (~17.5 KB).
 - `script.js` — classic (non-module) script loaded at the end of `<body>`. Only mobile menu (Escape/click-outside dismissal, scroll lock, and a focus trap that cycles between the toggle button and the menu links so Tab cannot escape to covered content), scroll-reveal (feature-checked IntersectionObserver with synchronous fallback), stat counters, and footer year.
-- `assets/` — live files only. `.webp` sources + `.jpg` `<picture>` fallbacks for every photo, `og-cover.jpg` (1200x630 OG/Twitter image), `logo-mark.png`/`.webp` (wordmark), `logo-icon.png` (icon source), `favicon-32.png` + `apple-touch-icon.png`. All original big PNGs, unreferenced jpg/png art, and `assets/source/` were deleted.
+- `assets/` — live files only. `.webp` sources + `.jpg` `<picture>` fallbacks for every photo, plus responsive `-480`/`-800` width variants wired through `srcset`/`sizes` (originals are 1086/941/577 wide, so no variant is upscaled); `og-cover.jpg` (1200x630 OG/Twitter image), `logo-mark.png`/`.webp` (wordmark), `favicon-32.png` + `apple-touch-icon.png`, and `assets/fonts/*.woff2` (self-hosted). All original big PNGs, unreferenced jpg/png art, and `assets/source/` were deleted.
 - `robots.txt` + `sitemap.xml` — root-level, single page, domain `https://elroble.ar`.
 - `vercel.json` — sets `Cache-Control: public,max-age=31536000,immutable` for `/assets/(.*)`; HTML caching is untouched (Vercel default).
 
