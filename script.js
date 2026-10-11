@@ -1,34 +1,63 @@
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.nav');
 
-function setMenu(open) {
+const menuFocusables = () => {
+  const links = navigation ? Array.from(navigation.querySelectorAll('a')) : [];
+  return menuButton ? [menuButton, ...links] : links;
+};
+
+function setMenu(open, restoreFocus) {
+  const wasOpen = navigation?.classList.contains('open');
   navigation?.classList.toggle('open', open);
   if (menuButton) {
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
   }
   document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (open && !wasOpen) {
+    const items = menuFocusables();
+    (items[1] || items[0])?.focus();
+  } else if (!open && wasOpen && restoreFocus) {
+    menuButton?.focus();
+  }
 }
 
 menuButton?.addEventListener('click', () => {
-  setMenu(!navigation?.classList.contains('open'));
+  setMenu(!navigation?.classList.contains('open'), false);
 });
 
 navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-  setMenu(false);
+  setMenu(false, false);
 }));
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && navigation?.classList.contains('open')) {
-    setMenu(false);
-    menuButton?.focus();
+  if (!navigation?.classList.contains('open')) return;
+  if (event.key === 'Escape') {
+    setMenu(false, true);
+    return;
+  }
+  if (event.key !== 'Tab') return;
+  const items = menuFocusables();
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  const active = document.activeElement;
+  if (event.shiftKey && active === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault();
+    first.focus();
+  } else if (!items.includes(active)) {
+    event.preventDefault();
+    first.focus();
   }
 });
 
 document.addEventListener('click', (event) => {
   if (!navigation?.classList.contains('open')) return;
   if (navigation.contains(event.target) || menuButton?.contains(event.target)) return;
-  setMenu(false);
+  setMenu(false, false);
 });
 
 const revealElements = document.querySelectorAll('.reveal');
