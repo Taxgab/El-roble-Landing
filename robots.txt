@@ -1,3 +1,69 @@
+# Carpinteria El Roble - https://www.elroble.ar
+#
+# Every token below is ALLOWED. None of them is required: per RFC 9309 a
+# crawler with no group of its own is allowed by default. They are written
+# explicitly as documentation, and so that a future edit to the wildcard
+# group cannot silently remove these bots from the site.
+#
+# Note: a crawler that has its own group is governed ONLY by that group, so
+# any path you ever need to block must be repeated inside each group below.
+
+# --- AI retrieval and citations -------------------------------------------------
+# These decide whether an AI answer engine can retrieve and cite the site.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: claude-code
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: Google-Agent
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+# --- Search indexes -------------------------------------------------------------
+# These also feed AI Overviews, AI Mode and Copilot on their own engines.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bravebot
+Allow: /
+
+# --- Everything else ------------------------------------------------------------
+
 User-agent: *
 Allow: /
 
